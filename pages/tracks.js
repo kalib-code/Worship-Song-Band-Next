@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 const Tracks = (props) => {
   return (
@@ -12,6 +13,7 @@ const Tracks = (props) => {
           <meta property="og:title" content="Tracks - Worship Song Band" />
         </Head>
         <Header rootClassName="header-root-class-name7"></Header>
+        <Footer rootClassName="footer-root-class-name6"></Footer>
       </div>
       <style jsx>
         {`
