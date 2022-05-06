@@ -1,6 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 
+import Header from '../components/header'
+
 const Tracks = (props) => {
   return (
     <>
@@ -9,6 +11,7 @@ const Tracks = (props) => {
           <title>Tracks - Worship Song Band</title>
           <meta property="og:title" content="Tracks - Worship Song Band" />
         </Head>
+        <Header rootClassName="header-root-class-name7"></Header>
       </div>
       <style jsx>
         {`
@@ -17,8 +20,9 @@ const Tracks = (props) => {
             display: flex;
             overflow: auto;
             min-height: 100vh;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: column;
+            justify-content: flex-start;
           }
         `}
       </style>
