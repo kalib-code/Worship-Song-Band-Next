@@ -1,39 +1,52 @@
 import React from 'react'
 
+import { variant } from 'styled-system'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import { TOKENS } from '../pages/style'
 
 const FeatureCard = (props) => {
   return (
-    <>
-      <div className={`feature-card-feature-card ${props.rootClassName} `}>
-        <h2 className="feature-card-text">{props.title}</h2>
-        <span className="feature-card-text1">{props.description}</span>
-      </div>
-      <style jsx>
-        {`
-          .feature-card-feature-card {
-            width: 100%;
-            display: flex;
-            padding: var(--dl-space-space-twounits);
-            align-items: center;
-            flex-direction: column;
-          }
-          .feature-card-text {
-            font-style: normal;
-            margin-top: var(--dl-space-space-unit);
-            text-align: center;
-            font-weight: 700;
-            margin-bottom: var(--dl-space-space-unit);
-          }
-          .feature-card-text1 {
-            color: var(--dl-color-gray-700);
-            text-align: center;
-          }
-        `}
-      </style>
-    </>
+    <StyledFeatureCard compVariant={props.rootClassName}>
+      <Text>{props.title}</Text>
+      <Text1>{props.description}</Text1>
+    </StyledFeatureCard>
   )
 }
+
+const componentStyleVariants = variant({
+  prop: 'compVariant',
+  variants: {
+    rootClassName: {},
+    rootClassName2: {},
+    rootClassName3: {},
+    rootClassName4: {},
+    rootClassName6: {},
+    rootClassName7: {},
+  },
+})
+
+const StyledFeatureCard = styled('div')(componentStyleVariants, {
+  width: '100%',
+  display: 'flex',
+  padding: TOKENS.DlSpaceSpaceTwounits,
+  'align-items': 'center',
+  'flex-direction': 'column',
+})
+
+const Text = styled('h2')({
+  'font-style': 'normal',
+  'margin-top': TOKENS.DlSpaceSpaceUnit,
+  'text-align': 'center',
+  'font-weight': '700',
+  'margin-bottom': TOKENS.DlSpaceSpaceUnit,
+})
+
+const Text1 = styled('span')({
+  color: TOKENS.DlColorGray700,
+  'text-align': 'center',
+})
 
 FeatureCard.defaultProps = {
   rootClassName: '',

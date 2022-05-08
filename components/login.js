@@ -1,59 +1,68 @@
 import React from 'react'
 
+import { variant } from 'styled-system'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import { projectStyleVariants, TOKENS } from '../pages/style'
 
 const Login = (props) => {
   return (
-    <>
-      <div className={`login-login ${props.rootClassName} `}>
-        <form className="login-form">
-          <input
-            type="text"
-            placeholder={props.textinput_placeholder}
-            className="login-textinput input"
-          />
-          <input
-            type="text"
-            placeholder={props.textinput_placeholder1}
-            className="login-textinput1 input"
-          />
-          <button className="login-button button">{props.ButtonType}</button>
-        </form>
-      </div>
-      <style jsx>
-        {`
-          .login-login {
-            flex: 0 0 auto;
-            width: 50%;
-            display: flex;
-            padding: var(--dl-space-space-oneandhalfunits);
-            align-items: center;
-            flex-direction: column;
-          }
-          .login-form {
-            width: 350px;
-            align-self: center;
-          }
-          .login-textinput {
-            width: 348px;
-            margin-bottom: var(--dl-space-space-unit);
-          }
-          .login-textinput1 {
-            width: 350px;
-            margin-bottom: var(--dl-space-space-oneandhalfunits);
-          }
-          .login-button {
-            width: 350px;
-            text-align: center;
-          }
-          .login-root-class-name {
-            width: 350px;
-          }
-        `}
-      </style>
-    </>
+    <StyledLogin compVariant={props.rootClassName}>
+      <Form>
+        <Textinput
+          type="text"
+          placeholder={props.textinput_placeholder}
+          projVariant="input"
+        />
+        <Textinput1
+          type="text"
+          placeholder={props.textinput_placeholder1}
+          projVariant="input"
+        />
+        <Button projVariant="button">{props.ButtonType}</Button>
+      </Form>
+    </StyledLogin>
   )
 }
+
+const componentStyleVariants = variant({
+  prop: 'compVariant',
+  variants: {
+    rootClassName: {
+      width: '350px',
+    },
+  },
+})
+
+const StyledLogin = styled('div')(componentStyleVariants, {
+  flex: '0 0 auto',
+  width: '50%',
+  display: 'flex',
+  padding: TOKENS.DlSpaceSpaceOneandhalfunits,
+  'align-items': 'center',
+  'flex-direction': 'column',
+})
+
+const Form = styled('form')({
+  width: '350px',
+  'align-self': 'center',
+})
+
+const Textinput = styled('input')(projectStyleVariants, {
+  width: '348px',
+  'margin-bottom': TOKENS.DlSpaceSpaceUnit,
+})
+
+const Textinput1 = styled('input')(projectStyleVariants, {
+  width: '350px',
+  'margin-bottom': TOKENS.DlSpaceSpaceOneandhalfunits,
+})
+
+const Button = styled('button')(projectStyleVariants, {
+  width: '350px',
+  'text-align': 'center',
+})
 
 Login.defaultProps = {
   ButtonType: 'SIGN IN',

@@ -1,110 +1,113 @@
 import React from 'react'
 
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import { TOKENS } from '../pages/style'
 
 const PlayList = (props) => {
   return (
-    <>
-      <div className="play-list-play-list">
-        <img
-          alt={props.Image_Background_Alt}
-          src={props.Image_Background}
-          loading="lazy"
-          className="play-list-image"
+    <StyledPlayList>
+      <Image
+        alt={props.Image_Background_Alt}
+        src={props.Image_Background}
+        loading="lazy"
+      />
+      <Container>
+        <ArtistAvatar
+          alt={props.Artist - Avatar_alt}
+          src={props.Artist - Avatar_src}
         />
-        <div className="play-list-container">
-          <img
-            alt={props.Artist - Avatar_alt}
-            src={props.Artist - Avatar_src}
-            className="play-list-artist-avatar"
-          />
-          <div className="play-list-div">
-            <span className="play-list-text">{props.Title}</span>
-            <span className="play-list-text1">{props.SubTitle}</span>
-          </div>
-        </div>
-        <svg viewBox="0 0 1024 1024" className="play-list-icon">
-          <path d="M426 704l256-192-256-192v384zM512 86q176 0 301 125t125 301-125 301-301 125-301-125-125-301 125-301 301-125z"></path>
-        </svg>
-      </div>
-      <style jsx>
-        {`
-          .play-list-play-list {
-            flex: 0 0 auto;
-            width: var(--dl-size-size-xxlarge);
-            height: var(--dl-size-size-xxlarge);
-            display: flex;
-            position: relative;
-            align-items: flex-start;
-            padding-top: var(--dl-space-space-oneandhalfunits);
-            padding-left: var(--dl-space-space-oneandhalfunits);
-            border-radius: 20px;
-            padding-right: var(--dl-space-space-oneandhalfunits);
-            flex-direction: column;
-            padding-bottom: var(--dl-space-space-oneandhalfunits);
-          }
-          .play-list-image {
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            align-self: center;
-            object-fit: cover;
-            border-radius: 20px;
-          }
-          .play-list-container {
-            flex: 0 0 auto;
-            display: flex;
-            position: relative;
-            align-items: center;
-            padding-top: var(--dl-space-space-halfunit);
-            padding-left: var(--dl-space-space-halfunit);
-            border-radius: 20px;
-            margin-bottom: var(--dl-space-space-halfunit);
-            padding-right: var(--dl-space-space-halfunit);
-            padding-bottom: var(--dl-space-space-halfunit);
-            background-color: rgba(0, 0, 0, 0.29);
-          }
-          .play-list-artist-avatar {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            margin-right: var(--dl-space-space-halfunit);
-            border-radius: 100px;
-          }
-          .play-list-div {
-            flex: 0 0 auto;
-            display: flex;
-            align-self: center;
-            flex-direction: column;
-          }
-          .play-list-text {
-            color: #fffefe;
-            font-style: normal;
-            font-weight: 700;
-            margin-bottom: var(--dl-space-space-halfunit);
-          }
-          .play-list-text1 {
-            color: #f5f0f0;
-            font-style: normal;
-            font-weight: 600;
-          }
-          .play-list-icon {
-            fill: #BF5837;
-            right: 0px;
-            width: var(--dl-size-size-small);
-            bottom: 0px;
-            height: var(--dl-size-size-small);
-            position: absolute;
-            margin-right: var(--dl-space-space-halfunit);
-            margin-bottom: var(--dl-space-space-halfunit);
-          }
-        `}
-      </style>
-    </>
+        <Div>
+          <Text>{props.Title}</Text>
+          <Text1>{props.SubTitle}</Text1>
+        </Div>
+      </Container>
+      <Icon viewBox="0 0 1024 1024">
+        <path d="M426 704l256-192-256-192v384zM512 86q176 0 301 125t125 301-125 301-301 125-301-125-125-301 125-301 301-125z"></path>
+      </Icon>
+    </StyledPlayList>
   )
 }
+
+const StyledPlayList = styled('div')({
+  flex: '0 0 auto',
+  width: TOKENS.DlSizeSizeXxlarge,
+  height: TOKENS.DlSizeSizeXxlarge,
+  display: 'flex',
+  position: 'relative',
+  'align-items': 'flex-start',
+  'padding-top': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'padding-left': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'border-radius': '20px',
+  'padding-right': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'flex-direction': 'column',
+  'padding-bottom': TOKENS.DlSpaceSpaceOneandhalfunits,
+})
+
+const Image = styled('img')({
+  top: '0px',
+  left: '0px',
+  width: '100%',
+  height: '100%',
+  position: 'absolute',
+  'align-self': 'center',
+  'object-fit': 'cover',
+  'border-radius': '20px',
+})
+
+const Container = styled('div')({
+  flex: '0 0 auto',
+  display: 'flex',
+  position: 'relative',
+  'align-items': 'center',
+  'padding-top': TOKENS.DlSpaceSpaceHalfunit,
+  'padding-left': TOKENS.DlSpaceSpaceHalfunit,
+  'border-radius': '20px',
+  'margin-bottom': TOKENS.DlSpaceSpaceHalfunit,
+  'padding-right': TOKENS.DlSpaceSpaceHalfunit,
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+  'background-color': 'rgba(0, 0, 0, 0.29)',
+})
+
+const ArtistAvatar = styled('img')({
+  width: '50px',
+  height: '50px',
+  'object-fit': 'cover',
+  'margin-right': TOKENS.DlSpaceSpaceHalfunit,
+  'border-radius': '100px',
+})
+
+const Div = styled('div')({
+  flex: '0 0 auto',
+  display: 'flex',
+  'align-self': 'center',
+  'flex-direction': 'column',
+})
+
+const Text = styled('span')({
+  color: '#fffefe',
+  'font-style': 'normal',
+  'font-weight': '700',
+  'margin-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
+
+const Text1 = styled('span')({
+  color: '#f5f0f0',
+  'font-style': 'normal',
+  'font-weight': '600',
+})
+
+const Icon = styled('svg')({
+  fill: '#BF5837',
+  right: '0px',
+  width: TOKENS.DlSizeSizeSmall,
+  bottom: '0px',
+  height: TOKENS.DlSizeSizeSmall,
+  position: 'absolute',
+  'margin-right': TOKENS.DlSpaceSpaceHalfunit,
+  'margin-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
 
 PlayList.defaultProps = {
   'Artist-Avatar_alt': 'image',

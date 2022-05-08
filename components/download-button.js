@@ -1,30 +1,27 @@
 import React from 'react'
 
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import { projectStyleVariants, TOKENS } from '../pages/style'
 
 const DownloadButton = (props) => {
   return (
-    <>
-      <div className="download-button-container">
-        <button className="download-button-button button">
-          {props.button1}
-        </button>
-      </div>
-      <style jsx>
-        {`
-          .download-button-container {
-            display: flex;
-            position: relative;
-          }
-          .download-button-button {
-            color: var(--dl-color-gray-white);
-            background-color: var(--dl-color-danger-300);
-          }
-        `}
-      </style>
-    </>
+    <Container>
+      <Button projVariant="button">{props.button1}</Button>
+    </Container>
   )
 }
+
+const Container = styled('div')({
+  display: 'flex',
+  position: 'relative',
+})
+
+const Button = styled('button')(projectStyleVariants, {
+  color: TOKENS.DlColorGrayWhite,
+  'background-color': TOKENS.DlColorDanger300,
+})
 
 DownloadButton.defaultProps = {
   button1: 'Download',
