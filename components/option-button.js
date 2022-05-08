@@ -1,40 +1,39 @@
 import React from 'react'
 
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import { TOKENS } from '../pages/style'
 
 const OptionButton = (props) => {
   return (
-    <>
-      <div className="option-button-capsule">
-        <span className="option-button-text">{props.text}</span>
-      </div>
-      <style jsx>
-        {`
-          .option-button-capsule {
-            flex: 0 0 auto;
-            display: flex;
-            box-shadow: 5px 5px 10px 0px #d4d4d4;
-            align-items: flex-start;
-            margin-right: var(--dl-space-space-oneandhalfunits);
-            padding-left: var(--dl-space-space-oneandhalfunits);
-            border-radius: 20px;
-            padding-right: var(--dl-space-space-oneandhalfunits);
-            background-color: #fbfafa;
-          }
-          .option-button-text {
-            color: #080808;
-            font-style: normal;
-            font-weight: 600;
-            padding-top: var(--dl-space-space-halfunit);
-            padding-left: var(--dl-space-space-halfunit);
-            padding-right: var(--dl-space-space-halfunit);
-            padding-bottom: var(--dl-space-space-halfunit);
-          }
-        `}
-      </style>
-    </>
+    <Capsule>
+      <Text>{props.text}</Text>
+    </Capsule>
   )
 }
+
+const Capsule = styled('div')({
+  flex: '0 0 auto',
+  display: 'flex',
+  'box-shadow': '5px 5px 10px 0px #d4d4d4',
+  'align-items': 'flex-start',
+  'margin-right': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'padding-left': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'border-radius': '20px',
+  'padding-right': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'background-color': '#fbfafa',
+})
+
+const Text = styled('span')({
+  color: '#080808',
+  'font-style': 'normal',
+  'font-weight': '600',
+  'padding-top': TOKENS.DlSpaceSpaceHalfunit,
+  'padding-left': TOKENS.DlSpaceSpaceHalfunit,
+  'padding-right': TOKENS.DlSpaceSpaceHalfunit,
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
 
 OptionButton.defaultProps = {
   text: 'All',

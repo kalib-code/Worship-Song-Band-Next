@@ -1,57 +1,61 @@
 import React from 'react'
 
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import { TOKENS } from '../pages/style'
 
 const AdditionalInfo = (props) => {
   return (
-    <>
-      <div className="additional-info-container">
-        <span className="additional-info-text">{props.genresText}</span>
-        <span className="additional-info-text1">{props.themeText}</span>
-        <span className="additional-info-text2">{props.wirterText}</span>
-        <span className="additional-info-text3">{props.yearText}</span>
-        <span className="additional-info-text4">{props.mtIdText}</span>
-        <span className="additional-info-text5">{props.copyRightsText}</span>
-      </div>
-      <style jsx>
-        {`
-          .additional-info-container {
-            flex: 0 0 auto;
-            width: 300px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            padding-top: var(--dl-space-space-oneandhalfunits);
-            padding-left: var(--dl-space-space-oneandhalfunits);
-            border-radius: 20px;
-            padding-right: var(--dl-space-space-oneandhalfunits);
-            flex-direction: column;
-            padding-bottom: var(--dl-space-space-oneandhalfunits);
-            background-color: #f7f5e9;
-          }
-          .additional-info-text {
-            padding-bottom: var(--dl-space-space-halfunit);
-          }
-          .additional-info-text1 {
-            padding-bottom: var(--dl-space-space-halfunit);
-          }
-          .additional-info-text2 {
-            padding-bottom: var(--dl-space-space-halfunit);
-          }
-          .additional-info-text3 {
-            padding-bottom: var(--dl-space-space-halfunit);
-          }
-          .additional-info-text4 {
-            padding-bottom: var(--dl-space-space-halfunit);
-          }
-          .additional-info-text5 {
-            padding-bottom: var(--dl-space-space-halfunit);
-          }
-        `}
-      </style>
-    </>
+    <Container>
+      <Text>{props.genresText}</Text>
+      <Text1>{props.themeText}</Text1>
+      <Text2>{props.wirterText}</Text2>
+      <Text3>{props.yearText}</Text3>
+      <Text4>{props.mtIdText}</Text4>
+      <Text5>{props.copyRightsText}</Text5>
+    </Container>
   )
 }
+
+const Container = styled('div')({
+  flex: '0 0 auto',
+  width: '300px',
+  display: 'flex',
+  'flex-wrap': 'wrap',
+  'align-items': 'flex-start',
+  'padding-top': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'padding-left': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'border-radius': '20px',
+  'padding-right': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'flex-direction': 'column',
+  'padding-bottom': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'background-color': '#f7f5e9',
+})
+
+const Text = styled('span')({
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
+
+const Text1 = styled('span')({
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
+
+const Text2 = styled('span')({
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
+
+const Text3 = styled('span')({
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
+
+const Text4 = styled('span')({
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
+
+const Text5 = styled('span')({
+  'padding-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
 
 AdditionalInfo.defaultProps = {
   yearText: 'Year: 2019',

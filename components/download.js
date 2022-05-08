@@ -1,57 +1,54 @@
 import React from 'react'
 
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
+import { projectStyleVariants, TOKENS } from '../pages/style'
 
 const Download = (props) => {
   return (
-    <>
-      <div className="download-container">
-        <img
-          alt={props.image_alt}
-          src={props.image_src}
-          className="download-image"
-        />
-        <span className="download-text">{props.text}</span>
-        <button className="download-button button">{props.button}</button>
-      </div>
-      <style jsx>
-        {`
-          .download-container {
-            flex: 0 0 auto;
-            width: 50%;
-            display: flex;
-            align-items: center;
-            padding-top: var(--dl-space-space-oneandhalfunits);
-            padding-left: var(--dl-space-space-oneandhalfunits);
-            padding-right: var(--dl-space-space-oneandhalfunits);
-            flex-direction: column;
-            padding-bottom: var(--dl-space-space-oneandhalfunits);
-            justify-content: center;
-          }
-          .download-image {
-            width: 50%;
-            margin-top: 0px;
-            object-fit: cover;
-            margin-bottom: var(--dl-space-space-unit);
-          }
-          .download-text {
-            font-size: 2em;
-            font-style: normal;
-            font-weight: 600;
-            margin-bottom: var(--dl-space-space-halfunit);
-          }
-          .download-button {
-            color: #f7f2f2;
-            border-color: rgba(0, 0, 0, 0);
-            border-width: 0px;
-            border-radius: var(--dl-radius-radius-radius8);
-            background-color: var(--dl-color-danger-300);
-          }
-        `}
-      </style>
-    </>
+    <Container>
+      <Image alt={props.image_alt} src={props.image_src} />
+      <Text>{props.text}</Text>
+      <Button projVariant="button">{props.button}</Button>
+    </Container>
   )
 }
+
+const Container = styled('div')({
+  flex: '0 0 auto',
+  width: '50%',
+  display: 'flex',
+  'align-items': 'center',
+  'padding-top': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'padding-left': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'padding-right': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'flex-direction': 'column',
+  'padding-bottom': TOKENS.DlSpaceSpaceOneandhalfunits,
+  'justify-content': 'center',
+})
+
+const Image = styled('img')({
+  width: '50%',
+  'margin-top': '0px',
+  'object-fit': 'cover',
+  'margin-bottom': TOKENS.DlSpaceSpaceUnit,
+})
+
+const Text = styled('span')({
+  'font-size': '2em',
+  'font-style': 'normal',
+  'font-weight': '600',
+  'margin-bottom': TOKENS.DlSpaceSpaceHalfunit,
+})
+
+const Button = styled('button')(projectStyleVariants, {
+  color: '#f7f2f2',
+  'border-color': 'rgba(0, 0, 0, 0)',
+  'border-width': '0px',
+  'border-radius': TOKENS.DlRadiusRadiusRadius8,
+  'background-color': TOKENS.DlColorDanger300,
+})
 
 Download.defaultProps = {
   button: 'Download',
